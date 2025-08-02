@@ -1,6 +1,6 @@
 # Obsidian-Dataview-folder-index-page
 JavaScript code for Obsidian Dataview plugin for folder index page:
-````js
+```js
 ```dataviewjs
 // ===== SETTINGS ===== //
 // true or false //
@@ -44,7 +44,7 @@ for (const folder of Object.keys(groups).sort()) {
     }
 }
 ```
-````
+```
 
 ## How to Use This Guide?
 
