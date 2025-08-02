@@ -1,0 +1,43 @@
+```dataviewjs
+// ===== SETTINGS ===== //
+// true or false //
+const settings = {
+    folder: "",                  // Folder to scan (leave blank "" to use the current folder)
+    showFolderHeader: true,          // Show folder title (#### Folder)
+    showFileList: true,              // Show file list
+    sortFiles: true,                 // Sort files alphabetically
+    groupBySubfolder: true,          // Group by subfolders
+    divider: "---",                  // Separator between groups (can be changed to "***" or "")
+};
+
+// ===== CODE (no need to touch) ===== //
+const targetFolder = settings.folder || dv.current().file?.folder || "";
+const pages = dv.pages()
+    .where(p => p.file.folder === targetFolder || p.file.folder.startsWith(targetFolder + "/"));
+
+// Grouping
+const groups = {};
+for (const p of pages) {
+    const folder = settings.groupBySubfolder ? p.file.folder : targetFolder;
+    if (!groups[folder]) groups[folder] = [];
+    groups[folder].push(p);
+}
+
+// Output
+for (const folder of Object.keys(groups).sort()) {
+    if (settings.showFolderHeader && folder !== targetFolder) {
+        dv.header(4, folder);
+    }
+
+    if (settings.showFileList) {
+        const files = settings.sortFiles 
+            ? groups[folder].sort((a, b) => a.file.name.localeCompare(b.file.name)) 
+            : groups[folder];
+        dv.list(files.map(f => f.file.link));
+    }
+
+    if (settings.divider) {
+        dv.span(settings.divider);
+    }
+}
+```
