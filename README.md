@@ -46,7 +46,24 @@ for (const folder of Object.keys(groups).sort()) {
 ```
 ```
 
-## How to Use This Guide?
+## Important Requirements and Instructions
+
+### Prerequisites
+
+To use this functionality, you need to have the **Dataview plugin** installed and enabled in **Obsidian**.
+### How to Use
+
+1. **Install Dataview Plugin**:
+* Go to Obsidian settings
+* Navigate to Community Plugins
+* Find and enable the Dataview plugin
+
+2. **Implement the Code**:
+* Create a new Obsidian page or open an existing one
+* Copy and paste the provided code into the page
+* After inserting the code, switch to **Preview Mode** to see the results
+
+### Configuration
 
 ### Settings at the Top — Customize Parameters to Your Needs:
 
